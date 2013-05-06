@@ -9,7 +9,7 @@
 		<!--[if lte IE 7]>
         	<link rel="stylesheet" href="public/css/style_ie.css" />
         <![endif]-->
-        <title>IN56 - Project</title>
+        <title></title>
     </head>
  
     <body>
@@ -20,7 +20,9 @@
 				</div>
 				<div class="advert-nav">
 					<div class="advert">
-						<h1>Advert</h1>	
+						<a href="http://www.betaseries.com/">
+							<img alt="Advert" src="public/images/FMA.jpg"/>
+						</a>	
 					</div>
 					<nav>
 						<ul>

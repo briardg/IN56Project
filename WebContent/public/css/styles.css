@@ -23,16 +23,22 @@ header .content{
 
 .logo{
 	width:200px;
-	text-align: center;
 }
 header .advert-nav{
 	margin-right: 0px;
 	width: 735px;
 	text-align: right;
 }
-
 .advert{
-	background-color:silver; 
+	height: 80px;
+	margin-bottom:20px;
+}
+
+.advert img{
+	margin-left:35px;
+	width: 700px;
+	height: 80px;
+	background-color:grey; 
 }
 
 header ul, header li{
@@ -48,9 +54,6 @@ nav ul{
 	border-radius:25px;
 	padding:5px;
 }
-nav li{
-	
-}
 
 .articles, aside{
 	border: 1px solid #002D40;
@@ -59,7 +62,7 @@ nav li{
 }
 
 .articles{
-	width: 630px;
+	width: 640px;
 	margin-right: 12px;
 	min-height: 200px;
 }
