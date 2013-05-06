@@ -30,6 +30,11 @@ header .advert-nav{
 	width: 735px;
 	text-align: right;
 }
+
+.advert{
+	background-color:silver; 
+}
+
 header ul, header li{
 	list-style-type: none;
 	display: inline;
@@ -54,7 +59,7 @@ nav li{
 }
 
 .articles{
-	width: 650px;
+	width: 630px;
 	margin-right: 12px;
 	min-height: 200px;
 }
@@ -65,13 +70,18 @@ article{
 
 article > p{
 	background: white;
+	text-align: justify;
 }
 
 aside{
-	text-align: center;
+	text-align: left;
 	width: 250px;
+	padding:0px 10px 10px 10px;
 }
 
+aside form{
+	text-align: right;
+}
 
 footer{
 	text-align: center;
