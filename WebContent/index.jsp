@@ -9,7 +9,9 @@
 		<!--[if lte IE 7]>
         	<link rel="stylesheet" href="public/css/style_ie.css" />
         <![endif]-->
-        <title></title>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="public/js/script.js"></script>
+        <title>IN56 Project</title>
     </head>
  
     <body>
@@ -20,20 +22,10 @@
 				</div>
 				<div class="advert-nav">
 					<div class="advert">
-						<a href="http://www.betaseries.com/">
-							<img alt="Advert" src="public/images/FMA.jpg"/>
-						</a>	
+						<%@include file="pub.jsp" %>
 					</div>
 					<nav>
-						<ul>
-							<li>Accueil</li>
-							
-							<li>Inscription</li>
-							
-							<li>Rechercher</li>
-							<li>Ajouter/supprimer un Billet</li>
-							<li>Panier</li>
-						</ul>
+						<%@include file="menu.jsp" %>
 					</nav>
 				</div>
 			</div>
@@ -63,17 +55,7 @@
 					</article>
 				</div>
 				<aside>
-					<h1>Connexion:</h1>
-					<div>
-						<form>
-							<label >Identifiant:</label><input/>
-							<br/>
-							<label >Mot de passe:</label><input/>
-							<br/>
-							<br/>
-							<input type="submit"/>	
-						</form>
-					</div>
+					<%@include file="aside.jsp" %>
 				</aside>
 			</div>
 		</section>

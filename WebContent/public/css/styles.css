@@ -4,6 +4,17 @@ body{
 	background:none repeat scroll 0 0 #DCDCDC
 }
 
+a
+{ 
+ text-decoration:none; 
+ color:black
+}
+
+nav a:HOVER{
+	color:white;
+	background-color:#002D40;
+}
+
 header, body>section,footer{
 	width:100%;
 }
@@ -84,6 +95,10 @@ aside{
 
 aside form{
 	text-align: right;
+}
+
+aside a{
+	text-decoration: underline;
 }
 
 footer{
