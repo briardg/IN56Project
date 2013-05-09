@@ -11,9 +11,8 @@
         <![endif]-->
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="public/js/script.js"></script>
-        <title>IN56 Project</title>
+        <title>IN56 Project: Accueil</title>
     </head>
- 
     <body>
         <header>
             <div class="content">
@@ -61,11 +60,7 @@
 		</section>
          
         <footer>
-        	<div class="content">
-            	<p>
-            		Copyright Gautier & Anthony - Tous droits réservés
-            	</p>
-        	</div>
+        	<%@include file="footer.jsp" %>
         </footer>
          
     </body>
