@@ -1,3 +1,4 @@
+<%@page contentType="text/html;charset=UTF-8"%>
 <div class="content">
 	<div class="logo">
 		<h1>IN56 Project</h1>

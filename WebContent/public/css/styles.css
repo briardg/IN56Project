@@ -3,6 +3,9 @@
 body{
 	background:none repeat scroll 0 0 #DCDCDC
 }
+.message{
+	color: rgb(195,18,23);
+}
 
 a
 { 
@@ -87,14 +90,29 @@ article > p{
 	text-align: justify;
 }
 
-aside{
+article .error{
+	border: 1px solid rgb(195,18,23);
+}
+
+#inscription{
+	text-align: center;	
+}
+
+#inscription table {
 	text-align: left;
+	margin: auto;
+}
+
+
+aside{
+	text-align: center;
 	width: 250px;
 	padding:0px 10px 10px 10px;
 }
 
-aside form{
-	text-align: right;
+aside table{
+	text-align:left;
+	margin:auto;
 }
 
 aside a{

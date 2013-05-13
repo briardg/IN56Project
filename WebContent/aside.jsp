@@ -1,13 +1,25 @@
+<%@page contentType="text/html;charset=UTF-8"%>
 <%if(session.getAttribute("User")==null){%>	
 <h2>Connexion:</h2>
 <div>
+	<%if(request.getAttribute("messageConnexion")!=null){
+		out.print(request.getAttribute("messageConnexion"));
+	}%>
 	<form action="Connexion" method="POST">
-		<label for="Identifiant">Identifiant:</label><input type="text" name="identifiant"/>
+		<table>
+			<tbody>
+				<tr>
+					<td><label for="Identifiant">Identifiant:</label></td>
+					<td><input type="text" name="identifiant"/></td>
+				</tr>
+				<tr>
+					<td><label for="mdp">Mot de passe:</label></td>
+					<td><input type="password" name="mdp"/></td>
+				</tr>
+			</tbody>
+		</table>
 		<br/>
-		<label for="mdp">Mot de passe:</label><input type="text" name="mdp"/>
-		<br/>
-		<br/>
-		<input type="submit"/>	
+		<input type="submit" value="Se connecter"/>	
 	</form>
 </div>
 <%}else{%>
@@ -16,7 +28,7 @@
 	</nav>
 	<div>
 		<ul>
-			<li>boucle sur les dernier billets<li>
+			<li>boucle sur les dernier billets</li>
 			
 		</ul>
 	</div>

@@ -1,3 +1,4 @@
+<%@page contentType="text/html;charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,25 +34,30 @@
 		<section>
             <div class="content">
             	<div class="articles">
-					<article>
-						<h1>Titre</h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</P>
+            	<% if(request.getAttribute("message")!=null){%>
+            		<article>
+						<h2 class="message"><%=request.getAttribute("message") %></h2>
 					</article>
-					<article>
-						<h1>Titre</h1>
-						<p>
-							Blalala lalalalalal alalalablalab baalbalbalbalbalba
-							<br/>
-							Blalala lalalalalal alalalablalab baalbalbalbalbalba
-							<br/>Blalala lalalalalal alalalablalab baalbalbalbalbalba
-							<br/>Blalala lalalalalal alalalablalab baalbalbalbalbalba
-							<br/>Blalala lalalalalal alalalablalab baalbalbalbalbalba
-							<br/>Blalala lalalalalal alalalablalab baalbalbalbalbalbo
-							<br/>azertyu
-						</P>
-					</article>
+            	<%}%>
+				<article>
+					<h2>Titre</h2>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</P>
+				</article>
+				<article>
+					<h2>Titre</h2>
+					<p>
+						Blalala lalalalalal alalalablalab baalbalbalbalbalba
+						<br/>
+						Blalala lalalalalal alalalablalab baalbalbalbalbalba
+						<br/>Blalala lalalalalal alalalablalab baalbalbalbalbalba
+						<br/>Blalala lalalalalal alalalablalab baalbalbalbalbalba
+						<br/>Blalala lalalalalal alalalablalab baalbalbalbalbalba
+						<br/>Blalala lalalalalal alalalablalab baalbalbalbalbalbo
+						<br/>azertyu
+					</P>
+				</article>
 				</div>
 				<aside>
 					<%@include file="aside.jsp" %>

@@ -1,10 +1,12 @@
+<%@page contentType="text/html;charset=UTF-8"%>
 <ul>
-	<li><a href="./IN56Project/">Accueil</a></li>
+	<li><a href="/IN56Project/">Accueil</a></li>
 	<%if(session.getAttribute("User")==null){%>								
-		<li>Inscription</li>							
+		<li><a href="/IN56Project/inscription.jsp">Inscription</a></li>							
 	<%}else{%>
-		<li>Rechercher</li>
-		<li>Mon Compte</li>
-		<li>Panier</li>
+		<li><a href="/IN56Project/rechercheBillet.jsp">Rechercher</a></li>
+		<li><a href="/IN56Project/monCompte.jsp">Mon Compte</a></li>
+		<li><a href="Panier">Panier</a></li>
+		<li><a href="Connexion">Deconnexion</a></li>
 	<%}%>
 </ul>
