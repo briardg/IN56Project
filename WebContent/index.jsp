@@ -2,16 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-		<!--[if lt IE 9]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-		<link rel="stylesheet" href="public/css/styles.css" />
-		<!--[if lte IE 7]>
-        	<link rel="stylesheet" href="public/css/style_ie.css" />
-        <![endif]-->
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="public/js/script.js"></script>
+        <%@ include file="WEB-INF/head/head.jsp" %>
         <title>IN56 Project: Accueil</title>
     </head>
     <body>
@@ -22,10 +13,10 @@
 				</div>
 				<div class="advert-nav">
 					<div class="advert">
-						<%@include file="pub.jsp" %>
+						<%@include file="WEB-INF/header/pub.jsp" %>
 					</div>
 					<nav>
-						<%@include file="menu.jsp" %>
+						<%@include file="WEB-INF/header/menu.jsp" %>
 					</nav>
 				</div>
 			</div>
@@ -33,7 +24,7 @@
         
 		<section>
             <div class="content">
-            	<div class="articles">
+            	<div id="articles">
             	<% if(request.getAttribute("message")!=null){%>
             		<article>
 						<h2 class="message"><%=request.getAttribute("message") %></h2>
@@ -60,13 +51,13 @@
 				</article>
 				</div>
 				<aside>
-					<%@include file="aside.jsp" %>
+					<%@include file="WEB-INF/aside/aside.jsp" %>
 				</aside>
 			</div>
 		</section>
          
         <footer>
-        	<%@include file="footer.jsp" %>
+        	<%@include file="WEB-INF/footer/footer.jsp" %>
         </footer>
          
     </body>

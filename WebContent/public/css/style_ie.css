@@ -1,6 +1,6 @@
 @CHARSET "utf-8";
 
-.logo, header .advert-nav, .articles, aside{
+.logo, header .advert-nav, #articles, aside{
     display: inline;
     zoom: 1;
 }

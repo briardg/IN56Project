@@ -5,7 +5,7 @@
 	<%if(request.getAttribute("messageConnexion")!=null){
 		out.print(request.getAttribute("messageConnexion"));
 	}%>
-	<form action="Connexion" method="POST">
+	<form action="/IN56Project/Connexion" method="POST">
 		<table>
 			<tbody>
 				<tr>

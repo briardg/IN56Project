@@ -29,14 +29,6 @@
     <servlet-name>Connexion</servlet-name>
     <url-pattern>/Connexion</url-pattern>
   </servlet-mapping>
-  <error-page>
-    <error-code>404</error-code>
-    <location>/404.jsp</location>
-  </error-page>
-  <error-page>
-    <error-code>500</error-code>
-    <location>/500.jsp</location>
-  </error-page>
   <servlet>
     <description></description>
     <display-name>RechercheBillet</display-name>
@@ -47,4 +39,20 @@
     <servlet-name>RechercheBillet</servlet-name>
     <url-pattern>/RechercheBillet</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <servlet-name>pub</servlet-name>
+    <jsp-file>/WEB-INF/header/pub.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pub</servlet-name>
+    <url-pattern>/pub.jsp</url-pattern>
+  </servlet-mapping>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error/404.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/error/500.jsp</location>
+  </error-page>
 </web-app>

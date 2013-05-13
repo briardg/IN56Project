@@ -8,26 +8,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-		<!--[if lt IE 9]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-		<link rel="stylesheet" href="public/css/styles.css" />
-		<!--[if lte IE 7]>
-        	<link rel="stylesheet" href="public/css/style_ie.css" />
-        <![endif]-->
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="public/js/script.js"></script>
+        <%@ include file="WEB-INF/head/head.jsp" %>
         <title>IN56 Project: Inscription</title>
     </head>
     <body>
         <header>
-        	<%@include file="header.jsp" %>
+        	<%@include file="WEB-INF/header/header.jsp" %>
         </header>
         
 		<section>
             <div class="content">
-            	<div class="articles">
+            	<div id="articles">
 					<article id="inscription">
 						<h2>Inscription:</h2>
 						<div>
@@ -144,13 +135,13 @@
 					</article>
 				</div>
 				<aside>
-					<%@include file="aside.jsp" %>
+					<%@include file="WEB-INF/aside/aside.jsp" %>
 				</aside>
 			</div>
 		</section>
          
         <footer>
-        	<%@include file="footer.jsp" %>
+        	<%@include file="WEB-INF/footer/footer.jsp" %>
         </footer>
     </body>
 </html>

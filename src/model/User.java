@@ -11,7 +11,7 @@ public class User {
 	private String num_rue="";
 	private String rue="";
 	private String ville="";
-	private int cp=0;
+	private String cp="";
 	private String mdp="";
 	private boolean isAdmin=false;
 	private String mail="";
@@ -22,7 +22,7 @@ public class User {
 	public User(){}
 	
 	public User(int id, String nom, String prenom, String num_rue,
-			String rue, String ville, int cp, String mdp, boolean isAdmin,
+			String rue, String ville, String cp, String mdp, boolean isAdmin,
 			String mail) {
 		super();
 		this.id = id;
@@ -74,10 +74,10 @@ public class User {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-	public int getCp() {
+	public String getCp() {
 		return cp;
 	}
-	public void setCp(int cp) {
+	public void setCp(String cp) {
 		this.cp = cp;
 	}
 	public String getMdp() {
@@ -125,7 +125,7 @@ public class User {
 				this.prenom = rs.getString("prenom");
 				this.num_rue = rs.getString("numero_rue");
 				this.rue = rs.getString("rue");
-				this.cp = rs.getInt("code_postal");
+				this.cp = rs.getString("code_postal");
 				this.ville = rs.getString("ville");
 				this.isAdmin = rs.getBoolean("estadmin");
 				this.mail = rs.getString("mail");

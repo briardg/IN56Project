@@ -12,14 +12,14 @@ session.setAttribute("nbpub", nb);
 if(nb==0){
 %>
 <a href="http://www.betaseries.com/">
-	<img alt="Advert" src="public/images/FMA.jpg"/>
+	<img alt="Advert" src="/IN56Project/public/images/FMA.jpg"/>
 </a>
 <%}else if(nb==1){%>
 <a href="http://www.betaseries.com/">
-	<img alt="Advert" src="public/images/dexter.jpg"/>
+	<img alt="Advert" src="/IN56Project/public/images/dexter.jpg"/>
 </a>
 <%}else if(nb==2){%>
 <a href="http://www.betaseries.com/">
-	<img alt="Advert" src="public/images/personofinterest.jpg"/>
+	<img alt="Advert" src="/IN56Project/public/images/personofinterest.jpg"/>
 </a>
 <%}%>

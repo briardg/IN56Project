@@ -61,7 +61,7 @@ public class Inscription extends HttpServlet {
 					request.getParameter("numrue"),
 					request.getParameter("rue"),
 					request.getParameter("ville"),
-					Integer.parseInt(request.getParameter("cp")),
+					request.getParameter("cp"),
 					request.getParameter("pwd"),
 					false,
 					request.getParameter("mail"));
