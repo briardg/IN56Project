@@ -94,8 +94,15 @@ public class VendreBillet extends HttpServlet {
 	            		else
 	            			valuesSql+="null,";
 	            	}else if(fi.getFieldName().equals("dateV")){
-	            		if(!fi.getString().equals(""))
+	            		if(!fi.getString().equals("")){
+	            			Date now = new Date();
+	            			now.setTime(now.getTime()+(10 * 24 * 3600 * 1000));
+	            			if(0<now.compareTo(new SimpleDateFormat("dd/MM/yyyy").parse(fi.getString()) )){
+	            				message="Le billet doit être valable dans plus de 10 jours";
+	            				throw new Exception();
+	            			}
 	            			valuesSql+="STR_TO_DATE('"+fi.getString()+"','%d/%m/%Y'),";
+	            		}
 	            	}else{
 	            		valuesSql+="'"+fi.getString()+"',";
 	            	}
@@ -113,13 +120,12 @@ public class VendreBillet extends HttpServlet {
 	        	 c.executeUpdate(sql);
 	         }catch(SQLException e){
 	        	 System.out.println(e);
-		         message="Problème:"+e;
+		         message="Problème de connexion.";
 	         }
 	         c.close();
 
 	      }catch(Exception e) {
 	         System.out.println(e);
-	         message="Problème:"+e;
 	      }
 	      
 	      request.setCharacterEncoding("UTF-8");

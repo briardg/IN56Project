@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Billet {
@@ -9,8 +10,8 @@ public class Billet {
 	private User vendeur;
 	private String ville_depart;
 	private String ville_arrivee;
-	private Date date_depart;
-	private Date date_arrivee;
+	private Timestamp date_depart;
+	private Timestamp date_retour;
 	private Date date_validite;
 	private double initial;
 	private double vente;
@@ -21,7 +22,7 @@ public class Billet {
 	public Billet(){}
 	
 	public Billet(int id, Commande commande, User vendeur, String ville_depart,
-			String ville_arrivee, Date date_depart, Date date_arrivee,
+			String ville_arrivee, Timestamp date_depart, Timestamp date_retour,
 			Date date_validite, double initial, double vente, String image) {
 		super();
 		this.id = id;
@@ -30,7 +31,7 @@ public class Billet {
 		this.ville_depart = ville_depart;
 		this.ville_arrivee = ville_arrivee;
 		this.date_depart = date_depart;
-		this.date_arrivee = date_arrivee;
+		this.date_retour = date_retour;
 		this.date_validite = date_validite;
 		this.initial = initial;
 		this.vente = vente;
@@ -68,17 +69,17 @@ public class Billet {
 	public void setVille_arrivee(String ville_arrivee) {
 		this.ville_arrivee = ville_arrivee;
 	}
-	public Date getDate_depart() {
+	public Timestamp getDate_depart() {
 		return date_depart;
 	}
-	public void setDate_depart(Date date_depart) {
+	public void setDate_depart(Timestamp date_depart) {
 		this.date_depart = date_depart;
 	}
-	public Date getDate_arrivee() {
-		return date_arrivee;
+	public Timestamp getDate_retour() {
+		return date_retour;
 	}
-	public void setDate_arrivee(Date date_arrivee) {
-		this.date_arrivee = date_arrivee;
+	public void setDate_retour(Timestamp date_retour) {
+		this.date_retour = date_retour;
 	}
 	public Date getDate_validite() {
 		return date_validite;

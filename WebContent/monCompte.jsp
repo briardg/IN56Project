@@ -65,8 +65,9 @@
 											<td><input type="text" name="prixV" id="prixV" size="5" required="required"/>€</td>
 										</tr>
 										<tr>
-											<td><label for="dateV">Date de Validité:</label></td>
+											<td><label for="dateV">Date de Validité*:</label></td>
 											<td><input type="text" name="dateV" id="dateV" class="datepicker" size="10" required="required"/></td>
+											
 										</tr>
 										<tr>
 											<td><label for="image">Image du Billet</label></td>
@@ -75,7 +76,8 @@
 									</tbody>
 								</table>
 								<input type="submit" value="Je mets en vente" />
-								<br/><br/>
+								<p class="small">*La date de Validité doit être de 10 jours supérieur à la date du jour.</p>
+								<br/>
 							</form>
 							<div>
 								<h3>Ventes Non conclues</h3>

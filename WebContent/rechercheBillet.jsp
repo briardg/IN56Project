@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.Billet"%>
 <%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html;charset=UTF-8"%>
@@ -17,14 +18,38 @@
             <div class="content">
             	<div id="articles">
             		<%LinkedList<Billet> l= (LinkedList<Billet>)request.getAttribute("billetsList");
-            		if(l!=null){
-            		for(Billet b : l){
+            		if(l!=null){%>
+            		<h2>Resultats de la Recherche:</h2>
+            		<%for(Billet b : l){
             			User v = b.getVendeur();
             		%>
+            		
             		<article>
-            			<h2><%=b.getVille_depart()+" > "+b.getVille_arrivee()+" by "+v.getMail()%></h2>
+            			<h3><%=b.getVille_depart()+" > "+b.getVille_arrivee()+" part "+v.getMail()%></h3>
             			<div>
-            				//todo information
+            				<table>
+									<tbody>
+										<tr>
+											<td><%=b.getVille_depart() %> > <%=b.getVille_arrivee() %></td>
+										</tr>
+										<tr>
+											<td>Depart: <%=new SimpleDateFormat("dd/MM/yyyy HH:mm").format(b.getDate_depart()) %></td>
+											<%if(b.getDate_retour()!=null){ %>
+												<td>Retour: <%=new SimpleDateFormat("dd/MM/yyyy HH:mm").format(b.getDate_retour()) %></td>
+											<%} %>
+										</tr>
+										<tr>
+											<td>Prix initial: <%=b.getInitial()%>€</td>
+											<td>Prix de Vente: <%=b.getVente() %>€</td>
+										</tr>
+										<tr>
+											<td>Valide jusqu'au: <%=new SimpleDateFormat("dd/MM/yyyy").format(b.getDate_validite()) %></td>
+										</tr>
+										<tr>
+											<td><a href="/IN56Project<%=b.getImage()%>"><img width="150px" alt="image du billet" src="/IN56Project<%=b.getImage()%>"/></a></td>
+										</tr>
+									</tbody>
+								</table>
             			</div>
             		</article>	
             		<%}
