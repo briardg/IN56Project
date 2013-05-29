@@ -1,12 +1,15 @@
 package controller;
 
 import java.io.IOException;
+import java.nio.channels.SeekableByteChannel;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.catalina.Session;
 
 import model.User;
 
@@ -55,6 +58,7 @@ public class Inscription extends HttpServlet {
 					|| !request.getParameter("mail").equals(request.getParameter("mail2"))){
 				throw new Exception();
 			}
+			User user=null;
 			User u = new User(0,
 					request.getParameter("nom"),
 					request.getParameter("prenom"),
@@ -65,14 +69,23 @@ public class Inscription extends HttpServlet {
 					request.getParameter("pwd"),
 					false,
 					request.getParameter("mail"));
+			if((user=(User)request.getSession().getAttribute("User"))==null){
 			u.save();
 			request.setAttribute("message", "Félicitation! Vous pouvez, maintenant, vous connecter <img src='./public/images/arrow-red.png' alt='arrow-red' width='30px'/>");
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
+			}else{
+				u.setId(user.getId());
+				request.getSession().setAttribute("User", u);
+				u.updateInBDD(u.getId());
+				request.setAttribute("message", "Données personnelles mises à jour !");
+			}
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.setAttribute("error","error" );
-			RequestDispatcher rd = request.getRequestDispatcher("inscription.jsp");
-			rd.forward(request, response);
+			if(request.getSession().getAttribute("User")==null){
+				request.getRequestDispatcher("inscription.jsp").forward(request, response);
+			}else{
+				request.getRequestDispatcher("monCompte.jsp").forward(request, response);
+			}
 		}
 	}
 

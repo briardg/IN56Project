@@ -5,8 +5,8 @@ import java.util.Date;
 public class Billet {
 	
 	private int id;
-	private Commande commande_id;
-	private User vendeur_id;
+	private Commande commande;
+	private User vendeur;
 	private String ville_depart;
 	private String ville_arrivee;
 	private Date date_depart;
@@ -15,20 +15,18 @@ public class Billet {
 	private double initial;
 	private double vente;
 	private String image;
-	private Boolean estVendu;
 	
 	
 	//constructeur
 	public Billet(){}
 	
-	public Billet(int id, Commande commande_id, User vendeur_id, String ville_depart,
+	public Billet(int id, Commande commande, User vendeur, String ville_depart,
 			String ville_arrivee, Date date_depart, Date date_arrivee,
-			Date date_validite, double initial, double vente, String image,
-			Boolean estVendu) {
+			Date date_validite, double initial, double vente, String image) {
 		super();
 		this.id = id;
-		this.commande_id = commande_id;
-		this.vendeur_id = vendeur_id;
+		this.commande = commande;
+		this.vendeur = vendeur;
 		this.ville_depart = ville_depart;
 		this.ville_arrivee = ville_arrivee;
 		this.date_depart = date_depart;
@@ -37,7 +35,6 @@ public class Billet {
 		this.initial = initial;
 		this.vente = vente;
 		this.image = image;
-		this.estVendu = estVendu;
 	}
 	
 	//getter setter
@@ -47,17 +44,17 @@ public class Billet {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Commande getCommande_id() {
-		return commande_id;
+	public Commande getCommande() {
+		return commande;
 	}
-	public void setCommande_id(Commande commande_id) {
-		this.commande_id = commande_id;
+	public void setCommande(Commande commande) {
+		this.commande = commande;
 	}
-	public User getVendeur_id() {
-		return vendeur_id;
+	public User getVendeur() {
+		return vendeur;
 	}
-	public void setVendeur_id(User vendeur_id) {
-		this.vendeur_id = vendeur_id;
+	public void setVendeur(User vendeur) {
+		this.vendeur = vendeur;
 	}
 	public String getVille_depart() {
 		return ville_depart;
@@ -107,13 +104,6 @@ public class Billet {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public Boolean getEstVendu() {
-		return estVendu;
-	}
-	public void setEstVendu(Boolean estVendu) {
-		this.estVendu = estVendu;
-	}
-	
 	
 
 }

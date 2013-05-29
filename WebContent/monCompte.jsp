@@ -1,5 +1,15 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="model.Connexion"%>
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@ include file="WEB-INF/verification/testconnexion.jsp" %>
+<%
+  boolean error=false;
+  if(request.getAttribute("error")!=null){
+	error=true;
+  }
+  User user=(User)session.getAttribute("User");
+%> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,14 +26,17 @@
             	<div id="articles">
             		<article id="tabs">
 						<ul>
-							<li><a href="#tabs-1">Mon Compte</a></li>
-							<li><a href="#tabs-2">Mes Ventes</a></li>
-							<li><a href="#tabs-3">Mes Achats</a></li>
+							<li><a href="#tabs-1">Mes Ventes</a></li>
+							<li><a href="#tabs-2">Mes Achats</a></li>
+							<li><a href="#tabs-3">Mon Compte</a></li>
 						</ul>
+						
 						<div id="tabs-1">
-							<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
-						</div>
-						<div id="tabs-2">
+							<span class="message">
+								<%if(request.getAttribute("Message")!=null)
+									out.print(request.getAttribute("Message"));
+								%>
+							</span>
 							<form method="POST" action="VendreBillet" enctype="multipart/form-data" id="VendreBillet">
 								<table>
 									<tbody>
@@ -36,8 +49,14 @@
 										<tr>
 											<td><label for="dateD">Date de Départ:</label></td>
 											<td><input type="text" name="dateD" id="dateD" class="datepicker" size="10" required="required"/></td>
+											<td><label for="heureD">Heure de Départ:</label></td>
+											<td><input type="text" name="heureD" id="heureD" class="heurepicker" size="3" required="required"/></td>
+										</tr>
+										<tr>
 											<td><label for="dateR">Date de Retour:</label></td>
 											<td><input type="text" name="dateR" id="dateR" class="datepicker" size="10"/></td>
+											<td><label for="heureR">Heure de Retour:</label></td>
+											<td><input type="text" name="heureR" id="heureR" class="heurepicker" size="3"/></td>
 										</tr>
 										<tr>
 											<td><label for="prixI">Prix Initial:</label></td>
@@ -58,13 +77,203 @@
 								<input type="submit" value="Je mets en vente" />
 								<br/><br/>
 							</form>
-							
-							//ventes non conclus
-							//ventes conclus
+							<div>
+								<h3>Ventes Non conclues</h3>
+								<%Connexion c = new Connexion(); 
+								  String sql="select * from billet where ID_COMMANDE is null and id_utilisateur="+user.getId();
+								  ResultSet res=c.executeQuery(sql);
+								  
+								  while(res.next()){
+								%>
+								
+								<table>
+									<tbody>
+										<tr>
+											<td><%=res.getString("VILLE_DEPART") %> > <%=res.getString("VILLE_ARRIVEE") %></td>
+										</tr>
+										<tr>
+											<td>Depart: <%=new SimpleDateFormat("dd/MM/yyyy HH:mm").format(res.getTimestamp("DATE_DEPART")) %></td>
+											<%if(res.getDate("DATE_RETOUR")!=null){ %>
+												<td>Retour: <%=new SimpleDateFormat("dd/MM/yyyy HH:mm").format(res.getTimestamp("DATE_RETOUR")) %></td>
+											<%} %>
+										</tr>
+										<tr>
+											<td>Prix initial: <%=res.getInt("PRIX_INITIAL") %>€</td>
+											<td>Prix de Vente: <%=res.getInt("PRIX_VENTE") %>€</td>
+										</tr>
+										<tr>
+											<td>Valide jusqu'au: <%=new SimpleDateFormat("dd/MM/yyyy").format(res.getDate("DATE_VALIDITE")) %></td>
+										</tr>
+										<tr>
+											<td><a href="/IN56Project<%=res.getString("CHEMIN_IMAGE")%>"><img width="150px" alt="image du billet" src="/IN56Project<%=res.getString("CHEMIN_IMAGE")%>"/></a></td>
+										</tr>
+									</tbody>
+								</table>	
+								<br/>
+								<br/>
+								<%
+								  }
+								  c.close();
+								%>
+							</div>
+							<div>
+								<h3>Ventes conclues</h3>
+								<%Connexion c1 = new Connexion(); 
+								  sql="select * from billet where ID_COMMANDE is not null and id_utilisateur="+user.getId();
+								  res=c1.executeQuery(sql);
+								  
+								  while(res.next()){
+								%>
+								
+								<table>
+									<tbody>
+										<tr>
+											<td><%=res.getString("VILLE_DEPART") %> > <%=res.getString("VILLE_ARRIVEE") %></td>
+										</tr>
+										<tr>
+											<td>Depart: <%=new SimpleDateFormat("dd/MM/yyyy HH:mm").format(res.getTimestamp("DATE_DEPART")) %></td>
+											<%if(res.getDate("DATE_RETOUR")!=null){ %>
+												<td>Retour: <%=new SimpleDateFormat("dd/MM/yyyy HH:mm").format(res.getTimestamp("DATE_RETOUR")) %></td>
+											<%} %>
+										</tr>
+										<tr>
+											<td>Prix initial: <%=res.getInt("PRIX_INITIAL") %>€</td>
+											<td>Prix de Vente: <%=res.getInt("PRIX_VENTE") %>€</td>
+										</tr>
+										<tr>
+											<td>Argent réellement gagné: <%=(res.getInt("PRIX_VENTE")-7) %>€</td>
+										</tr>
+										<tr>
+											<td><a href="/IN56Project<%=res.getString("CHEMIN_IMAGE")%>"><img width="150px" alt="image du billet" src="/IN56Project<%=res.getString("CHEMIN_IMAGE")%>"/></a></td>
+										</tr>
+									</tbody>
+								</table>
+								<br/>
+								<br/>
+								<%
+								  }
+								  c1.close();
+								%>
+							</div>
 							
 						</div>
+						<div id="tabs-2">
+							<%Connexion c2 = new Connexion(); 
+								  sql="select * "+
+							          "from commande c inner join billet b on c.ID_COMMANDE=b.ID_COMMANDE "+
+							          "where c.id_utilisateur="+user.getId();
+								  res=c2.executeQuery(sql);
+								  System.out.println(sql);
+								  while(res.next()){
+								%>
+								
+								<table>
+									<tbody>
+										<tr>
+											<td><%=res.getString("VILLE_DEPART") %> > <%=res.getString("VILLE_ARRIVEE") %></td>
+										</tr>
+										<tr>
+											<td>Depart: <%=new SimpleDateFormat("dd/MM/yyyy HH:mm").format(res.getTimestamp("DATE_DEPART")) %></td>
+											<%if(res.getDate("DATE_RETOUR")!=null){ %>
+												<td>Retour: <%=new SimpleDateFormat("dd/MM/yyyy HH:mm").format(res.getTimestamp("DATE_RETOUR")) %></td>
+											<%} %>
+										</tr>
+										<tr>
+											<td>Date de commande: <%=new SimpleDateFormat("dd/MM/yyyy").format(res.getDate("DATE_COMMANDE")) %></td>
+										</tr>
+										<tr>
+											<td colspan="2">Date approximative de livraison: <%=new SimpleDateFormat("dd/MM/yyyy").format(res.getDate("DATE_LIVRAISON")) %></td>
+										</tr>	
+										<tr>
+											<td>Prix d'achat: <%=res.getInt("PRIX_VENTE")+2 %>€</td>
+										</tr>
+										<tr>
+											<td><a href="/IN56Project<%=res.getString("CHEMIN_IMAGE")%>"><img width="150px" alt="image du billet" src="/IN56Project<%=res.getString("CHEMIN_IMAGE")%>"/></a></td>
+										</tr>
+									</tbody>
+								</table>
+								<br/>
+								<br/>
+								<%
+								  }
+								  c2.close();
+								%>
+						</div>
 						<div id="tabs-3">
-							<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+							<form method="POST" action="Inscription"><br/>
+								<table>
+									<tbody>
+										<tr>
+											<td><label for="nom">Nom:</label></td>
+											<td><input type="text" name="nom" id="nom" value="<%=user.getNom()%>"
+											required="required"/></td>
+										</tr>
+										<tr>
+											<td><label for="prenom">Prenom:</label></td>
+											<td><input type="text" name="prenom" id="prenom" value="<%=user.getPrenom()%>"
+											required="required"/></td>
+										</tr>
+										<tr>
+											<td><label for="numrue">Numéro rue:</label></td>
+											<td><input type="text" name="numrue" id="numrue" value="<%=user.getNum_rue()%>"
+											size="5" required="required"/></td>
+										</tr>
+										<tr>
+											<td><label for="rue">Rue:</label></td>
+											<td><input type="text" name="rue" id="rue" value="<%=user.getRue()%>"
+											required="required"/></td>
+										</tr>
+										<tr>
+											<td><label for="cp">Code Postal:</label></td>
+											<td><input type="text" name="cp" id="cp" size="5" value="<%=user.getCp()%>"
+											required="required"/></td>
+										</tr>
+										<tr>
+											<td><label for="ville">Ville:</label></td>
+											<td><input type="text" name="ville" id="ville" value="<%=user.getVille()%>"
+											required="required"/></td>
+										</tr>
+										<tr>
+											<td><label for="pwd">Mot de passe:</label></td>
+											<td><input type="password" name="pwd" id="pwd" autocomplete="off"
+											<%if(request.getParameter("pwd")!=null) 
+												out.print("value='"+request.getParameter("pwd")+"'");
+											else if(error)
+												out.print("class='error'");
+											%>  
+											required="required"/></td>
+										</tr>
+										<tr>
+											<td><label for="pwd2">Répétition du mot de passe:</label></td>
+											<td><input type="password" name="pwd2" id="pwd2"
+											<%if(error && !request.getParameter("pwd").equals(request.getParameter("pwd2"))) 
+												out.print("class='error'");									
+											%>
+											 required="required"/></td>
+										</tr>
+										<tr>
+											<td><label for="mail">Courriel:</label></td>
+											<td><input type="text" name="mail" id="mail" autocomplete="off" value="<%=user.getMail()%>" 
+											required="required"/></td>
+										</tr>
+										<tr>
+											<td><label for="mail2">Répétition du courriel:</label></td>
+											<td><input type="text" name="mail2" id="mail2" 
+											<%if(error && !(request.getParameter("mail")).equals(request.getParameter("mail2"))) 
+												out.print("class='error'");									
+											%>
+											required="required"/></td>
+										</tr>
+									</tbody>
+								</table>
+								<br/>
+								<%
+								  if(request.getAttribute("error")!=null)
+									out.print("<span class='message'>Champs non remplis ou mal remplis !<span>");
+								%> 
+								<br/>
+								<input type="submit" value="Sauvegarde"/>
+							</form>
 						</div>
 					</article>
 				</div>

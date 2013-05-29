@@ -9,6 +9,8 @@ $(document).ready(function(){
         });
     }, 5000);
     $( "#tabs" ).tabs();
-    $( ".datepicker" ).datepicker();
+    $.datepicker.setDefaults( $.datepicker.regional["fr"]);
+    $( ".datepicker" ).datepicker({ dateFormat: "dd/mm/yy" });
+    $( ".heurepicker" ).timeEntry({show24Hours: true});
     $( "input[type=submit], nav a, nav button" ).button();
 });

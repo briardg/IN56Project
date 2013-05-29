@@ -21,6 +21,11 @@ public class User {
 	//constructeur
 	public User(){}
 	
+	public User(int id, String mail){
+		this.id=id;
+		this.mail=mail;
+	}
+	
 	public User(int id, String nom, String prenom, String num_rue,
 			String rue, String ville, String cp, String mdp, boolean isAdmin,
 			String mail) {
@@ -86,7 +91,7 @@ public class User {
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
-	public Boolean getIsAdmin() {
+	public Boolean isAdmin() {
 		return isAdmin;
 	}
 	public void setIsAdmin(Boolean isAdmin) {
@@ -111,9 +116,21 @@ public class User {
 		}
 	}
 	
+	public void updateInBDD(int id) throws SQLException{
+		String sql="UPDATE utilisateur" +
+				   " set NOM='"+this.nom+"', PRENOM='"+this.prenom+"', NUMERO_RUE='"+this.num_rue+"', RUE='"+this.rue+"', VILLE='"+this.ville+"', CODE_POSTAL='"+this.cp+"', MDP=sha1('"+this.mdp+salt+"'), MAIL='"+this.mail+"' " +
+				   " where ID_UTILISATEUR="+id+";";
+		try {
+			Connexion c = new Connexion();
+			c.executeUpdate(sql);
+			c.close();
+		} catch (Exception e) {
+			throw new SQLException("Not Save...");
+		}
+	}
+	
 	public void setUserFomBDD(String login,String pwd) throws SQLException{
 		String sql="Select * from utilisateur where mail='"+login+"' and mdp=sha1('"+pwd+salt+"')";
-		System.out.println(sql);
 		try{
 			Connexion c = new Connexion();
 			ResultSet rs= c.executeQuery(sql);

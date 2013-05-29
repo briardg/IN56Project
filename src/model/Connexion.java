@@ -30,7 +30,7 @@ public class Connexion {
 		try {
 			return rs=this.st.executeQuery(sql);
 		} catch (SQLException e) {
-			throw new SQLException("Error executeQuery in model.Connexion:"+e);
+			throw new SQLException("Error executeQuery in model.Connexion: "+e);
 		}
 	}
 	
@@ -38,7 +38,7 @@ public class Connexion {
 		try {
 			return this.st.executeUpdate(sql);
 		} catch (SQLException e) {
-			throw new SQLException("Error executeQuery in model.Connexion:"+e);
+			throw new SQLException("Error executeUpdate in model.Connexion: "+e);
 		}
 	}
 	

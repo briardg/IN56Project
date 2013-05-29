@@ -39,13 +39,23 @@
     <servlet-name>RechercheBillet</servlet-name>
     <url-pattern>/RechercheBillet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>pub</servlet-name>
     <jsp-file>/WEB-INF/header/pub.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>pub</servlet-name>
     <url-pattern>/pub.jsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Faq</display-name>
+    <servlet-name>Faq</servlet-name>
+    <servlet-class>controller.Faq</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Faq</servlet-name>
+    <url-pattern>/Faq</url-pattern>
   </servlet-mapping>
   <error-page>
     <error-code>404</error-code>
@@ -55,4 +65,14 @@
     <error-code>500</error-code>
     <location>/error/500.jsp</location>
   </error-page>
+  <servlet>
+    <description></description>
+    <display-name>VendreBillet</display-name>
+    <servlet-name>VendreBillet</servlet-name>
+    <servlet-class>controller.VendreBillet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VendreBillet</servlet-name>
+    <url-pattern>/VendreBillet</url-pattern>
+  </servlet-mapping>
 </web-app>

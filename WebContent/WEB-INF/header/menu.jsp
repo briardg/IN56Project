@@ -1,3 +1,4 @@
+<%@page import="model.User"%>
 <%@page contentType="text/html;charset=UTF-8"%>
 <ul>
 	<li><a href="/IN56Project/">Accueil</a></li>
