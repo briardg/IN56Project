@@ -19,19 +19,21 @@
             	<div id="articles">
             		<%LinkedList<Billet> l= (LinkedList<Billet>)request.getAttribute("billetsList");
             		if(l!=null){%>
-            		<h2>Resultats de la Recherche:</h2>
-            		<%for(Billet b : l){
-            			User v = b.getVendeur();
-            		%>
-            		
+            		<article>
+	            		<h2>Resultat de la Recherche:</h2>
+	            		
+	            		<%if(l.size()==0){%>
+	            			<p>Aucun billet ne correspond à votre recherche.<p>
+	            		<%}
+	            		for(Billet b : l){
+	            			User v = b.getVendeur();
+	            		%>
+            		</article>
             		<article>
             			<h3><%=b.getVille_depart()+" > "+b.getVille_arrivee()+" part "+v.getMail()%></h3>
             			<div>
             				<table>
 									<tbody>
-										<tr>
-											<td><%=b.getVille_depart() %> > <%=b.getVille_arrivee() %></td>
-										</tr>
 										<tr>
 											<td>Depart: <%=new SimpleDateFormat("dd/MM/yyyy HH:mm").format(b.getDate_depart()) %></td>
 											<%if(b.getDate_retour()!=null){ %>
@@ -47,6 +49,15 @@
 										</tr>
 										<tr>
 											<td><a href="/IN56Project<%=b.getImage()%>"><img width="150px" alt="image du billet" src="/IN56Project<%=b.getImage()%>"/></a></td>
+										</tr>
+										<tr>
+											<td><input type="button" 
+											value=<%if(((LinkedList<Integer>)request.getSession().getAttribute("Panier")).contains(b.getId())) {%>
+														"Supprimer du panier"
+													<%}else{ %>
+														"Ajouter au panier"
+													<%}%> 
+											id='<%=b.getId()%>' class="panier" /></td>
 										</tr>
 									</tbody>
 								</table>

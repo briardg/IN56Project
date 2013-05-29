@@ -120,7 +120,7 @@ public class VendreBillet extends HttpServlet {
 	        	 c.executeUpdate(sql);
 	         }catch(SQLException e){
 	        	 System.out.println(e);
-		         message="Problème de connexion.";
+		         message="Problème.";
 	         }
 	         c.close();
 

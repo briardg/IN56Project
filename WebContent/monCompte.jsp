@@ -82,7 +82,11 @@
 							<div>
 								<h3>Ventes Non conclues</h3>
 								<%Connexion c = new Connexion(); 
-								  String sql="select * from billet where ID_COMMANDE is null and id_utilisateur="+user.getId();
+								  String sql="select * "+
+										     "from billet "+
+										     "where ID_COMMANDE is null "+
+										     "and id_utilisateur="+user.getId()+
+										     " order by ville_depart, ville_arrivee, date_Depart, date_retour, date_validite";
 								  ResultSet res=c.executeQuery(sql);
 								  
 								  while(res.next()){
@@ -100,8 +104,8 @@
 											<%} %>
 										</tr>
 										<tr>
-											<td>Prix initial: <%=res.getInt("PRIX_INITIAL") %>€</td>
-											<td>Prix de Vente: <%=res.getInt("PRIX_VENTE") %>€</td>
+											<td>Prix initial: <%=res.getDouble("PRIX_INITIAL") %>€</td>
+											<td>Prix de Vente: <%=res.getDouble("PRIX_VENTE") %>€</td>
 										</tr>
 										<tr>
 											<td>Valide jusqu'au: <%=new SimpleDateFormat("dd/MM/yyyy").format(res.getDate("DATE_VALIDITE")) %></td>
@@ -121,7 +125,8 @@
 							<div>
 								<h3>Ventes conclues</h3>
 								<%Connexion c1 = new Connexion(); 
-								  sql="select * from billet where ID_COMMANDE is not null and id_utilisateur="+user.getId();
+								  sql="select * from billet where ID_COMMANDE is not null and id_utilisateur="+user.getId()+
+									  " order by id_commande";
 								  res=c1.executeQuery(sql);
 								  
 								  while(res.next()){
@@ -139,11 +144,11 @@
 											<%} %>
 										</tr>
 										<tr>
-											<td>Prix initial: <%=res.getInt("PRIX_INITIAL") %>€</td>
-											<td>Prix de Vente: <%=res.getInt("PRIX_VENTE") %>€</td>
+											<td>Prix initial: <%=res.getDouble("PRIX_INITIAL") %>€</td>
+											<td>Prix de Vente: <%=res.getDouble("PRIX_VENTE") %>€</td>
 										</tr>
 										<tr>
-											<td>Argent réellement gagné: <%=(res.getInt("PRIX_VENTE")-7) %>€</td>
+											<td>Argent réellement gagné: <%=(res.getDouble("PRIX_VENTE")-7) %>€</td>
 										</tr>
 										<tr>
 											<td><a href="/IN56Project<%=res.getString("CHEMIN_IMAGE")%>"><img width="150px" alt="image du billet" src="/IN56Project<%=res.getString("CHEMIN_IMAGE")%>"/></a></td>
@@ -163,9 +168,9 @@
 							<%Connexion c2 = new Connexion(); 
 								  sql="select * "+
 							          "from commande c inner join billet b on c.ID_COMMANDE=b.ID_COMMANDE "+
-							          "where c.id_utilisateur="+user.getId();
+							          "where c.id_utilisateur="+user.getId()+
+							          " order by date_commande";
 								  res=c2.executeQuery(sql);
-								  System.out.println(sql);
 								  while(res.next()){
 								%>
 								
@@ -187,7 +192,7 @@
 											<td colspan="2">Date approximative de livraison: <%=new SimpleDateFormat("dd/MM/yyyy").format(res.getDate("DATE_LIVRAISON")) %></td>
 										</tr>	
 										<tr>
-											<td>Prix d'achat: <%=res.getInt("PRIX_VENTE")+2 %>€</td>
+											<td>Prix d'achat: <%=res.getDouble("PRIX_VENTE")+2 %>€</td>
 										</tr>
 										<tr>
 											<td><a href="/IN56Project<%=res.getString("CHEMIN_IMAGE")%>"><img width="150px" alt="image du billet" src="/IN56Project<%=res.getString("CHEMIN_IMAGE")%>"/></a></td>

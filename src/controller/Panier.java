@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.LinkedList;
 
 import javax.servlet.ServletException;
@@ -9,18 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.User;
-
 /**
- * Servlet implementation class Connexion
+ * Servlet implementation class Panier
  */
-public class Connexion extends HttpServlet {
+public class Panier extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Connexion() {
+    public Panier() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,28 +26,22 @@ public class Connexion extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().invalidate();
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User u = new User();
-		try {
-			u.setUserFomBDD(request.getParameter("identifiant"), request.getParameter("mdp"));
-			request.getSession(true).setAttribute("User",u);
-			request.getSession().setAttribute("Panier", new LinkedList<Integer>());
-			
-		} catch (SQLException e) {
-			System.out.println(e);
-			request.setAttribute("messageConnexion", "<h3 class='message'>Identifiant et/ou mot de passe incorrect ! </h3>");
+		if(request.getSession().getAttribute("User")!=null){
+			if(((LinkedList<Integer>)request.getSession().getAttribute("Panier")).contains(Integer.parseInt(request.getParameter("id")))){
+
+				((LinkedList<Integer>)request.getSession().getAttribute("Panier")).remove((Object)Integer.parseInt(request.getParameter("id")));
+			}else{
+
+				((LinkedList<Integer>)request.getSession().getAttribute("Panier")).add(Integer.parseInt(request.getParameter("id")));
+			}
 		}
-		finally{
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-		}
-		
 	}
 
 }
