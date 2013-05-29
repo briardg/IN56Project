@@ -39,7 +39,7 @@ public class Panier extends HttpServlet {
 					   "where";
 			int i =0;
 			for (Integer b: (LinkedList<Integer>)request.getSession().getAttribute("Panier")) {
-				if(i>=0){
+				if(i>0){
 					sql+=" or ";
 				}
 				sql+=" b.id_billet="+b;

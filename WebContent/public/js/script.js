@@ -12,7 +12,7 @@ $(document).ready(function(){
     $.datepicker.setDefaults( $.datepicker.regional["fr"]);
     $( ".datepicker" ).datepicker({ dateFormat: "dd/mm/yy" });
     $( ".heurepicker" ).timeEntry({show24Hours: true});
-    $( "input[type=submit], nav a, input[type=button]" ).button();
+    $( "input[type=submit], nav a,.button, input[type=button]" ).button();
     $(".panier").click(function(){
     	input=$(this);
     	$.post("/IN56Project/Panier",{'id':$(this).attr('id')} ,function(data) {

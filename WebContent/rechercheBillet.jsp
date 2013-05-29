@@ -24,11 +24,12 @@
 	            		
 	            		<%if(l.size()==0){%>
 	            			<p>Aucun billet ne correspond à votre recherche.<p>
-	            		<%}
-	            		for(Billet b : l){
+	            		<%}%>
+	            	</article>
+	            		<%for(Billet b : l){
 	            			User v = b.getVendeur();
 	            		%>
-            		</article>
+
             		<article>
             			<h3><%=b.getVille_depart()+" > "+b.getVille_arrivee()+" part "+v.getMail()%></h3>
             			<div>

@@ -192,7 +192,7 @@
 											<td colspan="2">Date approximative de livraison: <%=new SimpleDateFormat("dd/MM/yyyy").format(res.getDate("DATE_LIVRAISON")) %></td>
 										</tr>	
 										<tr>
-											<td>Prix d'achat: <%=res.getDouble("PRIX_VENTE")+2 %>€</td>
+											<td>Prix d'achat: <%=res.getDouble("PRIX_VENTE") %>€</td>
 										</tr>
 										<tr>
 											<td><a href="/IN56Project<%=res.getString("CHEMIN_IMAGE")%>"><img width="150px" alt="image du billet" src="/IN56Project<%=res.getString("CHEMIN_IMAGE")%>"/></a></td>
