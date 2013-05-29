@@ -1,11 +1,12 @@
+<%@page import="model.Billet"%>
+<%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@ include file="WEB-INF/verification/testconnexion.jsp" %>
-<%@ page import="model.Faq"%>
 <!DOCTYPE html>
 <html>
     <head>
         <%@ include file="/WEB-INF/head/head.jsp" %>
-        <title>IN56 Project: FAQ</title>
+        <title>IN56 Project: Panier</title>
     </head>
     <body>
         <header>
@@ -16,19 +17,12 @@
             <div class="content">
             	<div id="articles">
 					<article>
-						<table>
-		            		<tbody>
-					            <%
-						            Faq [] f = new Faq[1];
-					            	f[0]=(Faq)request.getAttribute("faq");
-		
-						            for(int i = 0; i < f.length; i++) {
-						            	out.print("<tr><td>"+f[i].getQuestion()+"</td></tr>");
-						            	out.print("<tr><td>"+f[i].getReponse()+"</td></tr>");
-					            	}
-				        		%>
-		            		</tbody>            	
-		            	</table>
+						<h2>Panier:</h2>
+						<%if(((LinkedList<Billet>)request.getAttribute("Panier")).size()>=0){
+							
+						}else{%>
+						<p>Panier Vide</p>
+						<%}%>
 					</article>
 				</div>
 				<aside>
