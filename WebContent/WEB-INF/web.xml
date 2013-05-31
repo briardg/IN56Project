@@ -85,4 +85,14 @@
     <servlet-name>Panier</servlet-name>
     <url-pattern>/Panier</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Paiement</display-name>
+    <servlet-name>Paiement</servlet-name>
+    <servlet-class>controller.Paiement</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Paiement</servlet-name>
+    <url-pattern>/Paiement</url-pattern>
+  </servlet-mapping>
 </web-app>

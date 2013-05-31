@@ -16,7 +16,7 @@
             	<div id="articles">
 					<article>
 					<h2>Page de Paiement !</h2>
-					<a class="button" href="index.jsp" >Valider le paiement</a>
+					<a class="button" href="/IN56Project/Paiement" >Valider le paiement</a>
 					</article>
 				</div>
 				<aside>
