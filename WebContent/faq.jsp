@@ -1,59 +1,32 @@
-<%@page contentType="text/html;charset=UTF-8"%>
-<%@ include file="WEB-INF/verification/testconnexion.jsp" %>
-<%@ page import="model.Faq"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="model.Connexion"%>
-
-<%@ page import="java.util.Vector" language="java" %>
-
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <%@ page import="model.Faq"%>
 <html>
-    <head>
-        <%@ include file="/WEB-INF/head/head.jsp" %>
-        <title>IN56 Project: FAQ</title>
-    </head>
-    <body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		 <%@ include file="WEB-INF/head/head.jsp" %>
+		<title>IN56 Project: FAQ</title>
+	</head>
+	<body>
         <header>
-        	<%@include file="/WEB-INF/header/header.jsp" %>
+        	<%@include file="WEB-INF/header/header.jsp" %>
         </header>
         
 		<section>
             <div class="content">
-            	<div id="articles">
-					<article>
-						<table>
-		            		<tbody>
-					        	<table id="faq">
-					            <%
-					        		try {
-					        			Connexion c = new Connexion();
-					        			String sql = "SELECT * FROM FAQ";
-					        			ResultSet rs = c.executeQuery(sql);
-					        			
-					        			while(rs.next()) {		
-					        				out.print("<tr><td class=\"question\"><img width=\"50px\" height=\"50px\" style=\"float:left;\" src=\"/IN56Project/public/images/pointInt.jpg\"/>"+rs.getString(2)+"</tr></td>");
-					        				out.print("<tr><td class=\"reponse\">"+rs.getString(3)+"</tr></td>");
-					        			}
-					        			rs.close();
-					        			c.close();
-					        		} catch (Exception e) {
-					        			response.getWriter().write(e.toString());
-					        		}
-				        		%>      
-				        		</table>				        		
-		            		</tbody>            	
-		            	</table>
-					</article>
-				</div>
-				<aside>
-					<%@include file="/WEB-INF/aside/aside.jsp" %>
-				</aside>
-			</div>
-		</section>
-         
-        <footer>
-        	<%@include file="/WEB-INF/footer/footer.jsp" %>
-        </footer>
-    </body>
+            	<table>
+            		<tbody>
+			            <%
+				            Faq[] f = (Faq[])request.getAttribute("contact");
+
+				            for(int i = 0; i < f.length; i++) {
+				            	out.print("<tr><td>"+f[i].getQuestion()+"</td></tr>");
+				            	out.print("<tr><td>"+f[i].getReponse()+"</td></tr>");
+			            	}
+		        		%>
+            		</tbody>            	
+            	</table>
+            </div>
+        </section>	
+	</body>
 </html>
