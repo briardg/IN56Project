@@ -79,7 +79,7 @@
 								<p class="small">*La date de Validité doit être de 10 jours supérieur à la date du jour.</p>
 								<br/>
 							</form>
-							<div>
+							<div style="border-bottom:1px solid black">
 								<h3>Ventes Non conclues</h3>
 								<%Connexion c = new Connexion(); 
 								  String sql="select * "+

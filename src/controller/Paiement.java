@@ -44,15 +44,13 @@ public class Paiement extends HttpServlet {
 				c = new Connexion();
 				String sql="insert into commande (id_utilisateur,date_commande,date_livraison) " +
 						   "values ("+u.getId()+",now(),ADDDate(now(), INTERVAL 2 DAY)); ";
-				System.out.println(sql);
+				c.executeUpdate(sql);
 				for(Integer i : ((LinkedList<Integer>)request.getSession().getAttribute("Panier"))){
 				   sql="Update billet " +
 				   "set id_commande=(select max(id_commande) from commande ) " +
 				   "where id_billet="+i+"; ";	
 				   c.executeUpdate(sql);
 				}
-				
-				
 				
 			}catch(Exception e){
 				System.err.println(e);

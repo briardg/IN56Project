@@ -9,7 +9,7 @@
 		<table>
 			<tbody>
 				<tr>
-					<td><label for="Identifiant">Identifiant:</label></td>
+					<td><label for="Identifiant">Email:</label></td>
 					<td><input type="text" name="identifiant"/></td>
 				</tr>
 				<tr>

@@ -97,7 +97,7 @@ public class VendreBillet extends HttpServlet {
 	            		if(!fi.getString().equals("")){
 	            			Date now = new Date();
 	            			now.setTime(now.getTime()+(10 * 24 * 3600 * 1000));
-	            			if(0<now.compareTo(new SimpleDateFormat("dd/MM/yyyy").parse(fi.getString()) )){
+	            			if(0<=now.compareTo(new SimpleDateFormat("dd/MM/yyyy").parse(fi.getString()) )){
 	            				message="Le billet doit être valable dans plus de 10 jours";
 	            				throw new Exception();
 	            			}
