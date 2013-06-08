@@ -6,7 +6,7 @@ public class Faq {
 	private int id;
 	private String question;
 	private String reponse;
-	
+
 	public Faq() {
 		super();
 		this.id = -1;
@@ -44,9 +44,9 @@ public class Faq {
 	public void setReponse(String reponse) {
 		this.reponse = reponse;
 	}
-	
+
 	public void save() throws SQLException{
-		String sql="INSERT INTO utilisateur (`QUESTION`, `REPONSE`) " +
+		String sql="INSERT INTO faq (`QUESTION`, `REPONSE`) " +
 				   "VALUES ('"+this.question+"', '"+this.reponse+"');";
 		try {
 			Connexion c = new Connexion();
