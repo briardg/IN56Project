@@ -58,13 +58,15 @@
 								</table>
             		</article>	
 	            	<%}%> 
-					<article>
-						<h4>Prix Billet(s) = <%=prixTotal %>€</h4> 
-						<h4>Frais Expédition = 2€ x <%=nbV %>Vendeur = <%=2*nbV %>€</h4>
-						<h3>Prix Total => <%=prixTotal+2*nbV %>€</h3> 
-						<a class="button" href="paiement.jsp" >Payer</a>
-					</article>
+					<%if(request.getAttribute("Panier")!=null && ((LinkedList<Billet>)request.getAttribute("Panier")).size()!=0){%>
+						<article>
+							<h4>Prix Billet(s) = <%=prixTotal %>€</h4> 
+							<h4>Frais Expédition = 2€ x <%=nbV %>Vendeur = <%=2*nbV %>€</h4>
+							<h3>Prix Total => <%=prixTotal+2*nbV %>€</h3> 
+							<a class="button" href="paiement.jsp" >Payer</a>
+						</article>
 					<%}%>
+				<%}%>
 				</div>
 				<aside>
 					<%@include file="/WEB-INF/aside/aside.jsp" %>
