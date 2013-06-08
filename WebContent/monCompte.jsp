@@ -285,13 +285,13 @@
 					</article>
 				</div>
 				<aside>
-					<%@include file="WEB-INF/aside/aside.jsp" %>
+					<%@include file="/WEB-INF/aside/aside.jsp" %>
 				</aside>
 			</div>
 		</section>
          
         <footer>
-        	<%@include file="WEB-INF/footer/footer.jsp" %>
+        	<%@include file="/WEB-INF/footer/footer.jsp" %>
         </footer>
     </body>
 </html>

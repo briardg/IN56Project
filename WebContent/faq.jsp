@@ -1,6 +1,10 @@
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@ include file="WEB-INF/verification/testconnexion.jsp" %>
 <%@ page import="model.Faq"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="model.Connexion"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,19 +20,25 @@
             <div class="content">
             	<div id="articles">
 					<article>
-						<table>
-		            		<tbody>
-					            <%
-						            Faq [] f = new Faq[1];
-					            	f[0]=(Faq)request.getAttribute("faq");
-		
-						            for(int i = 0; i < f.length; i++) {
-						            	out.print("<tr><td>"+f[i].getQuestion()+"</td></tr>");
-						            	out.print("<tr><td>"+f[i].getReponse()+"</td></tr>");
-					            	}
-				        		%>
-		            		</tbody>            	
-		            	</table>
+							<%
+								try {
+									Connexion c = new Connexion();
+									String sql = "SELECT * FROM FAQ";
+									ResultSet rs = c.executeQuery(sql);
+
+									while (rs.next()) {%>
+										<h2>
+											<img width="40px" height="40px" style="float:left" src="/IN56Project/public/images/pointInt.jpg"/>
+											<%=rs.getString(2)%>
+										</h2>
+										<p><%=rs.getString(3)%></p>
+									<%}
+									rs.close();
+									c.close();
+								} catch (Exception e) {
+									response.getWriter().write(e.toString());
+								}
+							%>
 					</article>
 				</div>
 				<aside>

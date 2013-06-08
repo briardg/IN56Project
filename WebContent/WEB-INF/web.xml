@@ -95,4 +95,14 @@
     <servlet-name>Paiement</servlet-name>
     <url-pattern>/Paiement</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Administration</display-name>
+    <servlet-name>Administration</servlet-name>
+    <servlet-class>controller.Administration</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Administration</servlet-name>
+    <url-pattern>/Administration</url-pattern>
+  </servlet-mapping>
 </web-app>

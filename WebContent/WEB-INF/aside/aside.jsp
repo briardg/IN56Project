@@ -33,15 +33,15 @@
 		</form>
 	</nav>
 	<div>
-		<% String sql="SELECT * "+
+		<% String sqlaside="SELECT * "+
 						"FROM billet "+
 						"WHERE ID_COMMANDE IS NULL "+
 						"AND date_depart >= now() "+
 						"AND date_validite >= now() "+
 						"ORDER BY date_depart, ville_depart DESC "+
 						"LIMIT 1 , 5";
-		Connexion c = new Connexion();
-		ResultSet  rs = c.executeQuery(sql);
+		Connexion caside = new Connexion();
+		ResultSet  rs = caside.executeQuery(sqlaside);
 		
 		%>
 		<H4>Derniers billets misent en ventes:</H4>
@@ -50,6 +50,6 @@
 			<li><a href="/IN56Project/RechercheBillet?id=<%=rs.getInt("id_billet")%>" > <%=rs.getString("ville_depart") %> > <%=rs.getString("ville_arrivee") %></a></li>
 			<%} %>
 		</ul>
-		<%c.close(); %>
+		<%caside.close(); %>
 	</div>
 <%}%>
