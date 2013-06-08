@@ -31,7 +31,7 @@
 	            		%>
 
             		<article>
-            			<h3><%=b.getVille_depart()+" > "+b.getVille_arrivee()+" part "+v.getMail()%></h3>
+            			<h3><%=b.getVille_depart()+" > "+b.getVille_arrivee()+" par "+v.getMail()%></h3>
             			<div>
             				<table>
 									<tbody>
@@ -74,9 +74,9 @@
 									<tbody>
 										<tr>
 											<td><label for="villeD">Ville de Départ:</label></td>
-											<td><input type="text" name="villeD" id="villeD" required="required"/></td>
+											<td><input type="text" name="villeD" id="villeD" required="required" class="autocompleteVille" autocomplete="off"/></td>
 											<td><label for="villeA">Ville d'arrivée:</label></td>
-											<td><input type="text" name="villeA" id="villeA" required="required"/></td>
+											<td><input type="text" name="villeA" id="villeA" required="required" class="autocompleteVille" autocomplete="off"/></td>
 										</tr>
 										<tr>
 											<td><label for="dateD">Date de Départ:</label></td>

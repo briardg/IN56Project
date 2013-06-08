@@ -42,9 +42,9 @@
 									<tbody>
 										<tr>
 											<td><label for="villeD">Ville de Départ:</label></td>
-											<td><input type="text" name="villeD" id="villeD" size="10" required="required"/></td>
+											<td><input type="text" name="villeD" id="villeD" size="10" required="required" class="autocompleteVille" autocomplete="off"/></td>
 											<td><label for="villeA">Ville d'arrivée:</label></td>
-											<td><input type="text" name="villeA" id="villeA" size="10" required="required"/></td>
+											<td><input type="text" name="villeA" id="villeA" size="10" required="required" class="autocompleteVille" autocomplete="off"/></td>
 										</tr>
 										<tr>
 											<td><label for="dateD">Date de Départ:</label></td>

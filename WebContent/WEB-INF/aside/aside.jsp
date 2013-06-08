@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="model.Connexion"%>
 <%@page contentType="text/html;charset=UTF-8"%>
 <%if(session.getAttribute("User")==null){%>	
 <h2>Connexion:</h2>
@@ -24,12 +26,30 @@
 </div>
 <%}else{%>
 	<nav>
-		Recherche Rapide: <input type="text" name="recherche" />
+		<h4>Recherche Rapide:</h4>
+		<form method="POST" action="RechercheBillet">
+			<input class="autocompleteVille" type="text" name="villeD" autocomplete="off" placeholder="Recherche Rapide"/>
+			<input type="submit" value="Go">
+		</form>
 	</nav>
 	<div>
-		<ul>
-			<li>boucle sur les dernier billets</li>
-			
+		<% String sql="SELECT * "+
+						"FROM billet "+
+						"WHERE ID_COMMANDE IS NULL "+
+						"AND date_depart >= now() "+
+						"AND date_validite >= now() "+
+						"ORDER BY date_depart, ville_depart DESC "+
+						"LIMIT 1 , 5";
+		Connexion c = new Connexion();
+		ResultSet  rs = c.executeQuery(sql);
+		
+		%>
+		<H4>Derniers billets misent en ventes:</H4>
+		<ul style="text-align:left">
+			<%while(rs.next()){%>
+			<li><a href="/IN56Project/RechercheBillet?id=<%=rs.getInt("id_billet")%>" > <%=rs.getString("ville_depart") %> > <%=rs.getString("ville_arrivee") %></a></li>
+			<%} %>
 		</ul>
+		<%c.close(); %>
 	</div>
 <%}%>
