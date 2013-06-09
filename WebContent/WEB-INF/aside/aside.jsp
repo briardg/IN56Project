@@ -44,7 +44,7 @@
 		ResultSet  rs = caside.executeQuery(sqlaside);
 		
 		%>
-		<H4>Derniers billets misent en ventes:</H4>
+		<H4>Derniers billets mis en vente:</H4>
 		<ul style="text-align:left">
 			<%while(rs.next()){%>
 			<li><a href="/IN56Project/RechercheBillet?id=<%=rs.getInt("id_billet")%>" > <%=rs.getString("ville_depart") %> > <%=rs.getString("ville_arrivee") %></a></li>

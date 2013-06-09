@@ -34,19 +34,18 @@
 					<h2>IN56 Project Printemps 2013</h2>
 					<p>
 						Voici notre site internet d'achats-ventes de billets de train.<br/>
-						Venez créer un compte, connectez-vous et mettez vos billet en vente ou recherchez les billets parmis nos meilleurs offres !
+						Venez créer un compte, connectez-vous et mettez vos billets en vente ou recherchez les billets parmis nos meilleurs offres !
 						
 					</P>
 					<h3>Acheteur</h3>
 					<p>
 						Une commission de 2 euros par acheteur est ajouté au prix final 
 						pour les frais de dossier et d'envoi.
-						<br/>Le ou billets arriveront par la poste dans les 48 à 78h après achat.
+						<br/>Le ou les billets arriveront par la poste dans les 48 à 72h après achat.
 					<p>
 					<h3>Vendeur</h3>
 					<p>
-						Une commission de 7 euros est prélevé sur le prix de vente du billet.<br/>
-						Envoyer les billets misent en vente à l'adresse suivant:<br/>
+						Une commission de 7 euros est prélevé sur le prix de vente de chaque billet.<br/>
 						<br/>
 						IN56 Project Printemps 2013<br/>
 						90 Rue UTBM<br/>

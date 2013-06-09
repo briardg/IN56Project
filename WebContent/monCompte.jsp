@@ -14,7 +14,7 @@
 <html>
     <head>
         <%@ include file="WEB-INF/head/head.jsp" %>
-        <title>IN56 Project: mon Compte</title>
+        <title>IN56 Project: Mon Compte</title>
     </head>
     <body>
         <header>
@@ -28,7 +28,7 @@
 						<ul>
 							<li><a href="#tabs-1">Mes Ventes</a></li>
 							<li><a href="#tabs-2">Mes Achats</a></li>
-							<li><a href="#tabs-3">Mon Compte</a></li>
+							<li><a href="#tabs-3">Mes Informations Personnelles</a></li>
 						</ul>
 						
 						<div id="tabs-1">

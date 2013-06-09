@@ -46,8 +46,8 @@ public class Faq {
 	}
 
 	public void save() throws SQLException {
-		String sql = "INSERT INTO faq (`QUESTION`, `REPONSE`) " + "VALUES ('"
-				+ this.question + "', '" + this.reponse + "');";
+		String sql = "INSERT INTO faq (`QUESTION`, `REPONSE`) " + "VALUES (\""
+				+ this.question + "\", \"" + this.reponse + "\");";
 		try {
 			Connexion c = new Connexion();
 			c.executeUpdate(sql);

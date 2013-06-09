@@ -1,5 +1,5 @@
 <%@page contentType="text/html;charset=UTF-8"%>
-<%@ include file="WEB-INF/verification/testconnexion.jsp"%>
+<%@ include file="WEB-INF/verification/testadministration.jsp"%>
 <%@ page import="model.Faq"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.ResultSet"%>
@@ -24,7 +24,7 @@
 					<table>
 						<tbody>
 								<tr>
-									<td>Liste utilisateur :</td>
+									<td>Liste utilisateurs :</td>
 								</tr>
 								<tr>
 									<td>
@@ -53,7 +53,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td>Liste admin :</td>
+									<td>Liste administrateurs :</td>
 								</tr>
 								<tr>
 									<td>
@@ -83,6 +83,11 @@
 										</form>
 									</td>
 								</tr>
+							</tbody>
+					</table>	
+					<br/>
+					<table>
+						<tbody>
 								<tr>
 									<td>Création d'un nouvelle question pour la FAQ :</td>
 								</tr>
