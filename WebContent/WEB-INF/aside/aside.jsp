@@ -39,7 +39,7 @@
 						"AND date_depart >= now() "+
 						"AND date_validite >= now() "+
 						"ORDER BY date_depart, ville_depart DESC "+
-						"LIMIT 1 , 5";
+						"LIMIT 0 , 4";
 		Connexion caside = new Connexion();
 		ResultSet  rs = caside.executeQuery(sqlaside);
 		

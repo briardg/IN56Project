@@ -71,7 +71,7 @@ public class RechercheBillet extends HttpServlet {
 			}
 			model.Connexion c = new model.Connexion();
 		    ResultSet rs=c.executeQuery(sql);
-		    LinkedList<Billet> billetsList = new LinkedList<>();
+		    LinkedList<Billet> billetsList = new LinkedList<Billet>();
 		    while(rs.next()){
 		    	billetsList.add(new Billet(rs.getInt("ID_BILLET"),
 		    							   null,
